@@ -37,6 +37,11 @@ gem 'pundit'
 #for seed
 gem 'open-uri'
 gem 'json'
+gem 'kaminari'
+
+
+
+gem 'sassc'
 
 
 

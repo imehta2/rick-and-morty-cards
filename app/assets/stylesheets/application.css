@@ -13,3 +13,82 @@
  *= require_tree .
  *= require_self
  */
+ .cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  width: 250px;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card-details {
+  font-size: 14px;
+}
+
+/* app/assets/stylesheets/styles.css */
+
+/* Navigation Bar */
+.navbar {
+  background-color: #333;
+  overflow: hidden;
+}
+
+.navbar-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-list li {
+  float: left;
+}
+
+.navbar-list li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.navbar-list li a:hover {
+  background-color: #111;
+}
+
+/* Search Bar */
+.search-bar {
+  float: right;
+  margin-top: 10px;
+}
+
+.search-bar input[type="text"] {
+  padding: 6px;
+  border: none;
+  border-radius: 4px;
+}
+
+.search-bar input[type="submit"] {
+  padding: 6px 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-bar input[type="submit"]:hover {
+  background-color: #45a049;
+}

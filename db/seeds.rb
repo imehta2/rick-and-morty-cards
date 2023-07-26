@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-AdminUser.create!(email: 'pippoud305@gmail.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
 
 # app/db/seeds.rb
 
@@ -28,13 +28,12 @@ character_details_response['results'].each do |character|
     location['residents'].any? { |resident| resident.split('/').last.to_i == character['id'] }
   end
 
-  Product.create!(
+  Character.create!(
     name: character['name'],
     status: character['status'],
     species: character['species'],
     gender: character['gender'],
     location: location&.dig('name'),
-    dimension: location&.dig('dimension'),
     image: character['image']
   )
 end

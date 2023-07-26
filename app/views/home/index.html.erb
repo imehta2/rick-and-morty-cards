@@ -1,0 +1,28 @@
+<h1>Rick and Morty Collectibles</h1>
+
+<%= render 'shared/navbar' %> <!-- Include the navbar from a shared partial -->
+
+<div class="cards-container">
+  <% collection_to_display = @search_results&.presence || @character_details&.presence %>
+  <% if collection_to_display %>
+    <% collection_to_display.each do |character| %>
+      <div class="card">
+        <%= image_tag(character['image']) %>
+        <div class="card-details">
+          <h2><%= character['name'] %></h2>
+          <p>Status: <%= character['status'] %></p>
+          <p>Gender: <%= character['gender'] %></p>
+          <% if character['location'] %>
+            <p>Location: <%= character['location']['name'] %></p>
+
+          <% else %>
+            <p>Location: Unknown</p>
+
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No characters found.</p>
+  <% end %>
+</div>

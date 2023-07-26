@@ -15,6 +15,15 @@ config.authentication_method = :authenticate_admin_user!
 config.current_user_method = :current_admin_user
 config.logout_link_path = :destroy_admin_user_session_path
 
+
+
+# config/initializers/active_admin.rb
+
+config.authorization_adapter = ActiveAdmin::CanCanAdapter
+
+# Handle unauthorized access
+config.on_unauthorized_access = :access_denied
+
   # Set an optional image to be displayed for the header
   # instead of a string (overrides :site_title)
   #

@@ -1,0 +1,17 @@
+<!-- app/views/shared/_navbar.html.erb -->
+
+<nav class="navbar">
+  <ul class="navbar-list">
+    <li><%= link_to 'Home', root_path %></li>
+    <li><%= link_to 'About Us', about_us_path %></li>
+    <li><%= link_to 'Contact Us', contact_us_path %></li>
+    <li><%= link_to 'Products', products_path %></li>
+  </ul>
+  <div class="search-bar">
+    <%= form_tag(products_path, method: :get) do %>
+      <%= text_field_tag(:query, params[:query], placeholder: 'Search by name, status, gender, etc.') %>
+      <%= select_tag(:category, options_for_select(category_options, params[:category]), include_blank: 'All') %>
+      <%= submit_tag('Search') %>
+    <% end %>
+  </div>
+</nav>

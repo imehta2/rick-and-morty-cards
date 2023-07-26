@@ -1,0 +1,32 @@
+<!-- app/views/products/index.html.erb -->
+
+<h1>Rick and Morty Collectibles</h1>
+
+<%= render 'shared/navbar' %>
+<h1>Products</h1>
+
+<% if @characters.any? %>
+  <div class="cards-container">
+    <% @characters.each do |character| %>
+      <div class="card">
+        <%= image_tag(character.image) %>
+        <div class="card-details">
+          <h2><%= character.name %></h2>
+          <p>Status: <%= character.status %></p>
+          <p>Gender: <%= character.gender %></p>
+          <% if character.location.present? %>
+            <p>Location: <%= character.location %></p>
+          <% else %>
+            <p>Location: Unknown</p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+
+    <%= paginate @characters %>
+
+<% else %>
+  <p>No results found.</p>
+<% end %>

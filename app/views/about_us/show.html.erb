@@ -1,0 +1,14 @@
+<h1>Rick and Morty Collectibles</h1>
+
+<%= render 'shared/navbar' %> <!-- Include the navbar from a shared partial -->
+
+
+<h1>About Us</h1>
+<% if @about_us %>
+  <p><%= @about_us.content %></p>
+  <% if current_admin_user %>
+    <%= link_to "Edit", edit_about_us_path %>
+  <% end %>
+<% else %>
+  <p>No about us content available.</p>
+<% end %>
