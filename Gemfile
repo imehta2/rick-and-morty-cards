@@ -30,9 +30,7 @@ gem "jbuilder"
 #for activeadmin
 gem 'activeadmin'
 gem 'devise'
-gem 'cancancan'
-gem 'draper'
-gem 'pundit'
+
 
 #for seed
 gem 'open-uri'

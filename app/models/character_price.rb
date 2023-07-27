@@ -1,0 +1,2 @@
+class CharacterPrice < ApplicationRecord
+end

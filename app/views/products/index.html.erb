@@ -20,6 +20,7 @@
               <p>Location: Unknown</p>
             <% end %>
             <p>Price: <%= Faker::Commerce.price(range: 100..1000) %></p>
+            <%= button_to "Add to Cart", add_to_cart_path(character_id: character.id), method: :post %>
           </div>
         </div>
       </a>

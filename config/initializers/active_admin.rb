@@ -10,19 +10,6 @@ ActiveAdmin.setup do |config|
   # users to your main site. Defaults to no link.
   #
   # config.site_title_link = "/"
-# config/initializers/active_admin.rb
-config.authentication_method = :authenticate_admin_user!
-config.current_user_method = :current_admin_user
-config.logout_link_path = :destroy_admin_user_session_path
-
-
-
-# config/initializers/active_admin.rb
-
-config.authorization_adapter = ActiveAdmin::CanCanAdapter
-
-# Handle unauthorized access
-config.on_unauthorized_access = :access_denied
 
   # Set an optional image to be displayed for the header
   # instead of a string (overrides :site_title)
@@ -84,7 +71,7 @@ config.on_unauthorized_access = :access_denied
   #
   # This setting changes the method which Active Admin calls
   # within the application controller.
-  config.authentication_method = :authenticate_user!
+  config.authentication_method = :authenticate_admin_user!
 
   # == User Authorization
   #
@@ -121,7 +108,7 @@ config.on_unauthorized_access = :access_denied
   #
   # This setting changes the method which Active Admin calls
   # (within the application controller) to return the currently logged in user.
-  config.current_user_method = :current_user
+  config.current_user_method = :current_admin_user
 
   # == Logging Out
   #
@@ -133,7 +120,7 @@ config.on_unauthorized_access = :access_denied
   # will call the method to return the path.
   #
   # Default:
-  config.logout_link_path = :destroy_user_session_path
+  config.logout_link_path = :destroy_admin_user_session_path
 
   # This setting changes the http method used when rendering the
   # link. For example :get, :delete, :put, etc..

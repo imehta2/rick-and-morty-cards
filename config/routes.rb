@@ -1,15 +1,15 @@
 # config/routes.rb
 
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'about_us/edit'
-    get 'about_us/update'
-  end
-  get 'contact_us/show'
-  get 'about_us/show'
-  devise_for :users, ActiveAdmin::Devise.config
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
+
+
+  get 'contact_us/show'
+  get 'about_us/show'
+
+
 
   # Defines the root path route ("/")
   root to: 'home#index'
@@ -23,4 +23,7 @@ Rails.application.routes.draw do
   # Define routes for about us and contact us pages if you have them
   get 'about_us', to: 'about_us#show'
   get 'contact_us', to: 'contact_us#show'
+
+  get '/cart', to: 'products#cart', as: :cart
+  post '/add_to_cart/:character_id', to: 'products#add_to_cart', as: :add_to_cart
 end

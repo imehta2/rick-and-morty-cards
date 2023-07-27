@@ -14,6 +14,9 @@ module CollectibleCardsStore
 
     # Configuration for the application, engines, and railties goes here.
     #
+
+    config.middleware.use ActionDispatch::Session::CookieStore
+
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
