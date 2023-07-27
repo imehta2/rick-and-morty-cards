@@ -1,8 +1,8 @@
 <!-- app/views/products/index.html.erb -->
 <h1>Rick and Morty Collectibles</h1>
-
 <%= render 'shared/navbar' %>
-<h1>Products</h1>
+<h2>Products</h2>
+
 
 <% if @characters.any? %>
   <div class="cards-container">
@@ -26,12 +26,9 @@
       </a>
     <% end %>
   </div>
-
   <%= paginate @characters %>
-
 <% else %>
   <p>No results found.</p>
 <% end %>
 <div class="overlay"></div>
-
 <div class="card-center"></div>

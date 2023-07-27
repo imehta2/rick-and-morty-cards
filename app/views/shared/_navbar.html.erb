@@ -1,5 +1,4 @@
 <!-- app/views/shared/_navbar.html.erb -->
-
 <nav class="navbar">
   <ul class="navbar-list">
     <li><%= link_to 'Home', root_path %></li>
@@ -8,17 +7,18 @@
     <li><%= link_to 'Products', products_path %></li>
     <li><%= link_to 'Cart', cart_path %></li>
   </ul>
-  <div class="search-bar">
-    <%= form_tag(products_path, method: :get) do %>
-      <%= text_field_tag(:query, params[:query], placeholder: 'Search by name, status, gender, etc.') %>
 
+  <%= form_tag(products_path, method: :get, class: "search-bar") do %>
+    <div class="search-inputs">
+      <%= text_field_tag(:query, params[:query], placeholder: 'Search by name, status, gender, etc.') %>
       <!-- Dropdown list for status -->
       <%= select_tag(:status, options_for_select(['', 'Alive', 'Dead', 'unknown'], params[:status]), include_blank: 'All Status') %>
-
       <!-- Dropdown list for gender -->
       <%= select_tag(:gender, options_for_select(['', 'Female', 'Male', 'genderless', 'unknown'], params[:gender]), include_blank: 'All Gender') %>
-
       <%= submit_tag('Search') %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </nav>
+
+<!-- Rest of the content (cards-container, styles, etc.) -->
+

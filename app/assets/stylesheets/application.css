@@ -37,30 +37,54 @@
   font-size: 14px;
 }
 
+
+
 /* app/assets/stylesheets/styles.css */
+
+h1 {
+  text-align: center;
+  font-size: 36px;
+  color: #333;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 /* Navigation Bar */
 .navbar {
   background-color: #333;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .navbar-list {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: row; /* Align items in a straight line */
 }
 
 .navbar-list li {
-  float: left;
+  margin: 0 10px;
 }
 
 .navbar-list li a {
-  display: block;
   color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  transition: background-color 0.3s;
 }
 
 /* Change color on hover */
@@ -68,19 +92,60 @@
   background-color: #111;
 }
 
-/* Search Bar */
-.search-bar {
-  float: right;
-  margin-top: 10px;
+/* Center the navigation list and search inputs */
+.navbar {
+  background-color: #333;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between; /* Align items at the ends of the navigation bar */
+  align-items: center; /* Center items vertically */
+  height: 40px; /* Add height to make the navigation bar thicker */
 }
 
-.search-bar input[type="text"] {
+.navbar-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar-list li {
+  margin: 0 10px;
+}
+
+.navbar-list li a {
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+/* Change color on hover */
+.navbar-list li a:hover {
+  background-color: #111;
+}
+
+/* Styling for the search inputs */
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-inputs {
+  display: flex;
+  align-items: center;
+}
+
+.search-inputs input[type="text"],
+.search-inputs select {
   padding: 6px;
   border: none;
   border-radius: 4px;
+  margin-right: 10px; /* Add some spacing between the inputs */
 }
 
-.search-bar input[type="submit"] {
+.search-inputs input[type="submit"] {
   padding: 6px 12px;
   background-color: #4CAF50;
   color: white;
@@ -89,6 +154,14 @@
   cursor: pointer;
 }
 
-.search-bar input[type="submit"]:hover {
+.search-inputs input[type="submit"]:hover {
   background-color: #45a049;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+  .navbar-list {
+    flex-direction: column; /* Stack items vertically for mobile screens */
+    align-items: center; /* Center items horizontally for mobile screens */
+  }
 }
