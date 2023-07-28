@@ -2,27 +2,29 @@
 
 <%= render 'shared/navbar' %> <!-- Include the navbar from a shared partial -->
 
-<div class="cards-container">
-  <% collection_to_display = @search_results&.presence || @character_details&.presence %>
-  <% if collection_to_display %>
-    <% collection_to_display.each do |character| %>
-      <div class="card">
-        <%= image_tag(character['image']) %>
-        <div class="card-details">
-          <h2><%= character['name'] %></h2>
-          <p>Status: <%= character['status'] %></p>
-          <p>Gender: <%= character['gender'] %></p>
-          <% if character['location'] %>
-            <p>Location: <%= character['location']['name'] %></p>
-
-          <% else %>
-            <p>Location: Unknown</p>
-
-          <% end %>
+<% if @characters.any? %>
+  <div class="cards-container">
+    <% @characters.each do |character| %>
+      <a href="#" class="card-link" data-character-id="<%= character.id %>">
+        <div class="card">
+          <%= image_tag(character.image) %>
+          <div class="card-details">
+            <h2><%= character.name %></h2>
+            <p>Status: <%= character.status %></p>
+            <p>Gender: <%= character.gender %></p>
+            <% if character.location.present? %>
+              <p>Location: <%= character.location %></p>
+            <% else %>
+              <p>Location: Unknown</p>
+            <% end %>
+            <p>Price: <%= Faker::Commerce.price(range: 100..1000) %></p>
+            <%= button_to "Add to Cart", add_to_cart_path(character_id: character.id), method: :post %>
+          </div>
         </div>
-      </div>
+      </a>
     <% end %>
-  <% else %>
-    <p>No characters found.</p>
-  <% end %>
-</div>
+  </div>
+
+<% else %>
+  <p>No results found.</p>
+<% end %>

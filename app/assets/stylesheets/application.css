@@ -37,16 +37,30 @@
   font-size: 14px;
 }
 
-
-
-/* app/assets/stylesheets/styles.css */
+@font-face {
+  font-family: 'Get Schwifty'; /* Specify the font-family name */
+  src: url('get_schwifty.ttf') format('truetype'); /* Adjust the path to the font file accordingly */
+}
 
 h1 {
   text-align: center;
   font-size: 36px;
-  color: #333;
+  font-family: 'Get Schwifty', sans-serif; /* Use the custom font for h1 */
+  font-weight: bold; /* Make the font bold */
+  color: #17aec5;
   animation: fadeInUp 1s ease-in-out;
+  text-shadow: 0 0 1px #043639, 0 0 4px #d1db4b, 0 0 6px #c7da59;
 }
+
+h2 {
+  font-family: 'Get Schwifty', sans-serif;
+  font-weight: bold; /* Make the font bold */
+  color: #17aec5;
+  text-shadow: 0 0 1px #043639, 0 0 4px #d1db4b, 0 0 6px #c7da59;
+}
+
+/* app/assets/stylesheets/styles.css */
+
 
 @keyframes fadeInUp {
   from {
@@ -58,43 +72,12 @@ h1 {
     transform: translateY(0);
   }
 }
-
+/*
 /* Navigation Bar */
-.navbar {
-  background-color: #333;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-}
-
-.navbar-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: row; /* Align items in a straight line */
-}
-
-.navbar-list li {
-  margin: 0 10px;
-}
-
-.navbar-list li a {
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  transition: background-color 0.3s;
-}
-
-/* Change color on hover */
-.navbar-list li a:hover {
-  background-color: #111;
-}
 
 /* Center the navigation list and search inputs */
 .navbar {
-  background-color: #333;
+  background-color: #226a3f;
   overflow: hidden;
   display: flex;
   justify-content: space-between; /* Align items at the ends of the navigation bar */
@@ -107,6 +90,7 @@ h1 {
   margin: 0;
   padding: 0;
   display: flex;
+  flex-direction: row;
 }
 
 .navbar-list li {
@@ -115,15 +99,16 @@ h1 {
 
 .navbar-list li a {
   color: white;
+  font-weight: bold;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  transition: background-color 0.3s;
+  transition: background-color 1s;
 }
 
 /* Change color on hover */
 .navbar-list li a:hover {
-  background-color: #111;
+  background-color: #11321c;
 }
 
 /* Styling for the search inputs */

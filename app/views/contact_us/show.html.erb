@@ -1,5 +1,9 @@
-<h1>Contact Us</h1>
-<p><%= @contact_us.content %></p>
-<% if current_admin_user %>
-  <%= link_to "Edit", edit_contact_us_path %>
+<h1>Rick and Morty Collectibles</h1>
+<%= render 'shared/navbar' %> <!-- Include the navbar from a shared partial -->
+<h2>Contact Us</h2>
+<% if @contact_us %>
+  <p><%= @contact_us.content %></p>
+
+<% else %>
+  <p>No about us content available.</p>
 <% end %>

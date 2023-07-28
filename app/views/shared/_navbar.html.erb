@@ -14,7 +14,7 @@
       <!-- Dropdown list for status -->
       <%= select_tag(:status, options_for_select(['', 'Alive', 'Dead', 'unknown'], params[:status]), include_blank: 'All Status') %>
       <!-- Dropdown list for gender -->
-      <%= select_tag(:gender, options_for_select(['', 'Female', 'Male', 'genderless', 'unknown'], params[:gender]), include_blank: 'All Gender') %>
+      <%= select_tag(:gender, options_for_select(['', 'Female', 'Male', 'Genderless', 'unknown'], params[:gender]), include_blank: 'All Gender') %>
       <%= submit_tag('Search') %>
     </div>
   <% end %>
