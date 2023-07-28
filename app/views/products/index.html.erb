@@ -19,11 +19,12 @@
             <% else %>
               <p>Location: Unknown</p>
             <% end %>
-            <p>Price: <%= Faker::Commerce.price(range: 100..1000) %></p>
-            <%= button_to "Add to Cart", add_to_cart_path(character_id: character.id), method: :post %>
+            <p>Price: <%= character.price %></p>
+
           </div>
         </div>
       </a>
+      <%= button_to "Add to Cart", add_to_cart_path(character_id: character.id), method: :post %>
     <% end %>
   </div>
   <%= paginate @characters %>

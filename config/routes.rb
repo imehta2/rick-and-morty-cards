@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   get 'about_us', to: 'about_us#show'
   get 'contact_us', to: 'contact_us#show'
 
-  get '/cart', to: 'products#cart', as: :cart
-  post '/add_to_cart/:character_id', to: 'products#add_to_cart', as: :add_to_cart
+  get '/cart', to: 'products#cart', as: 'cart'
+  post '/add_to_cart/:character_id', to: 'products#add_to_cart', as: 'add_to_cart'
+  delete '/remove_path/:character_id', to: 'products#remove_from_cart', as: 'remove_from_cart'
+
 end

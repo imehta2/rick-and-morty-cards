@@ -11,6 +11,7 @@
  require 'open-uri'
 
 
+
 Character.delete_all
 
 # # # Define a method to fetch data from the API
@@ -34,9 +35,9 @@ while character_details_response["info"]["next"] do
       name: character['name'],
       status: character['status'],
       species: character['species'],
-     gender: character['gender'],
+      gender: character['gender'],
       location: character['location']['name'],
-      #price:Faker::Commerce.price(range: 100..1000)
+      price: Faker::Commerce.price(range: 100..1000),
       image: character['image']
      )
   end

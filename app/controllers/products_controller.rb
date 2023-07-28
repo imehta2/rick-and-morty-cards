@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
   def cart
     # Retrieve the cart from the session
     cart = session[:cart] || {}
-
+    puts cart.inspect
     # Get the character ids from the cart
     character_ids = cart.keys
 
@@ -40,10 +40,11 @@ class ProductsController < ApplicationController
   end
 
   def add_to_cart
+    puts params.inspect
     character = Character.find(params[:character_id])
 
     # Retrieve the cart from the session or create an empty cart if it doesn't exist
-    cart = session[:cart] || {}
+    cart = session[:cart] ||= {}
     # Check if the item is already in the cart, and increase the quantity if it is
     if cart[character.id.to_s]
       cart[character.id.to_s] += 1
@@ -54,8 +55,9 @@ class ProductsController < ApplicationController
 
     # Save the updated cart back to the session
     session[:cart] = cart
+    puts session[:cart].inspect
 
-    redirect_to products_path, notice: "#{character.name} added to cart."
+    redirect_to cart_path, notice: "#{character.name} added to cart."
   end
 
 
