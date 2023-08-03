@@ -13,6 +13,66 @@
  *= require_tree .
  *= require_self
  */
+
+
+/* Style for the status dot */
+.card-details p.status {
+  position: relative;
+}
+
+/* Style the "Dead" dot in red */
+.card-details p.status[data-status="Dead"]::after {
+  content: "\2022"; /* Unicode character for a bullet */
+  font-size: 30px;
+  color: red;
+  margin-left: 5px; /* Add spacing between the text and dot */
+}
+
+/* Style the "Alive" dot in bright green */
+.card-details p.status[data-status="Alive"]::after {
+  content: "\2022"; /* Unicode character for a bullet */
+  font-size: 30px;
+  color: limegreen;
+  margin-left: 5px; /* Add spacing between the text and dot */
+}
+
+/* Style the price in bold and blue */
+.card-details p.price {
+  font-weight: bold;
+  color: blue;
+}
+
+
+
+
+/* Styling for the larger navbar */
+.larger-navbar {
+  background-color: white;
+}
+
+.larger-navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap to the next line */
+}
+
+.larger-navbar li {
+  margin-right: 10px;
+}
+
+.larger-navbar a {
+  display: block;
+  padding: 8px 12px;
+  font-weight: bold;
+  color: green;
+  text-decoration: none;
+}
+
+
+
+
  .cards-container {
   display: flex;
   flex-wrap: wrap;

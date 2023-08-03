@@ -11,14 +11,14 @@
           <%= image_tag(character.image) %>
           <div class="card-details">
             <h2><%= character.name %></h2>
-            <p>Status: <%= character.status %></p>
+            <p class="status" data-status="<%= character.status %>">Status: <%= character.status %></p>
             <p>Gender: <%= character.gender %></p>
             <% if character.location.present? %>
               <p>Location: <%= character.location %></p>
             <% else %>
               <p>Location: Unknown</p>
             <% end %>
-            <p>Price: <%= character.price %></p>
+            <p class="price">Price: <%= character.price %></p>
             <a href="#" class="card-link" data-character-id="<%= character.id %>">view</a>
             <%= button_to "Add to Cart", add_to_cart_path(character_id: character.id), method: :post %>
           </div>

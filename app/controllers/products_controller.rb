@@ -21,6 +21,24 @@ class ProductsController < ApplicationController
       @characters = @characters.where(gender: params[:gender]).page(params[:page]).per(10)
     end
 
+    # Apply category filter if present
+    if params[:category].present?
+      category = Category.find_by(name: params[:category])
+      @characters = category.characters.page(params[:page]).per(10) if category
+    end
+
+
+  def show
+    @character = Character.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js # This will render app/views/products/show.js.erb
+    end
+  end
+
+
+
+
     # Paginate the filtered characters
     @characters = @characters.page(params[:page]).per(10)
   end

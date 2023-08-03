@@ -1,0 +1,8 @@
+<!-- app/views/shared/_navbar_home.html.erb -->
+<nav class="larger-navbar">
+  <ul>
+    <% Category.all.each do |category| %>
+      <li><%= link_to category.name, products_path(category: category.name) %></li>
+    <% end %>
+  </ul>
+</nav>

@@ -23,12 +23,19 @@ def fetch_api_data(url)
 # # # Fetch data from the API
  character_details_response = fetch_api_data('https://rickandmortyapi.com/api/character')
 
+
+ Category.create(name: 'Rare')
+ Category.create(name: 'Common')
+ Category.create(name: 'Uncommon')
  #puts character_details_response["info"]["next"]
 while character_details_response["info"]["next"] do
   #puts character_details_response["results"].size
 
   # Seed the database
   character_details_response['results'].each do |character|
+
+    categories = Category.all
+    random_category = categories.sample
 
 
     Character.create!(
@@ -38,11 +45,12 @@ while character_details_response["info"]["next"] do
       gender: character['gender'],
       location: character['location']['name'],
       price: Faker::Commerce.price(range: 100..1000),
-      image: character['image']
+      image: character['image'],
+      category: random_category
      )
   end
   character_details_response = fetch_api_data(character_details_response["info"]["next"])
 end
 
 
-# #AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+#### AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

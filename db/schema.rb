@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_28_121534) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_03_113838) do
   create_table "about_us", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", null: false
@@ -57,6 +57,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_121534) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "character_categories", force: :cascade do |t|
+    t.integer "character_id", null: false
+    t.integer "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_character_categories_on_category_id"
+    t.index ["character_id"], name: "index_character_categories_on_character_id"
+  end
+
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.string "status"
@@ -68,6 +77,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_121534) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "price"
+    t.integer "category_id", null: false
+    t.index ["category_id"], name: "index_characters_on_category_id"
   end
 
   create_table "contact_us", force: :cascade do |t|
@@ -105,4 +116,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_121534) do
   end
 
   add_foreign_key "cart_items", "characters"
+  add_foreign_key "character_categories", "categories"
+  add_foreign_key "character_categories", "characters"
+  add_foreign_key "characters", "categories"
 end
