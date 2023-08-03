@@ -7,7 +7,6 @@
 <% if @characters.any? %>
   <div class="cards-container">
     <% @characters.each do |character| %>
-      <a href="#" class="card-link" data-character-id="<%= character.id %>">
         <div class="card">
           <%= image_tag(character.image) %>
           <div class="card-details">
@@ -20,11 +19,11 @@
               <p>Location: Unknown</p>
             <% end %>
             <p>Price: <%= character.price %></p>
-
+            <a href="#" class="card-link" data-character-id="<%= character.id %>">view</a>
+            <%= button_to "Add to Cart", add_to_cart_path(character_id: character.id), method: :post %>
           </div>
         </div>
-      </a>
-      <%= button_to "Add to Cart", add_to_cart_path(character_id: character.id), method: :post %>
+
     <% end %>
   </div>
   <%= paginate @characters %>

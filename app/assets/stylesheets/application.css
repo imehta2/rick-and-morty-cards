@@ -17,8 +17,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: center; /* Horizontally center the cards */
+  align-items: center; /* Vertically center the cards */
 }
-
 .card {
   border: 1px solid #ccc;
   border-radius: 10px;
