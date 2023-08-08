@@ -10,11 +10,15 @@ $(document).on('turbolinks:load', function() {
   // Function to fetch character details using AJAX
   function fetchCharacterDetails(characterId) {
     $.ajax({
-      url: '/products/' + characterId, // Assuming the path is correct
+      url: '/products/' + characterId,
       method: 'GET',
-      dataType: 'script', // Use 'script' to execute the JS response
-      success: function() {
-        // AJAX success function, no need to do anything here
+      dataType: 'html',
+      success: function(response) {
+        // Update the modal with the fetched character details
+        $('#character-details-modal').html(response);
+
+        // Show the modal
+        $('#character-details-modal').fadeIn();
       },
       error: function(error) {
         console.log(error);

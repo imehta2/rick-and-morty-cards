@@ -6,25 +6,25 @@ class ProductsController < ApplicationController
     # Apply search filter if the "query" parameter is present
     if params[:query].present?
       puts "Search Query: #{params[:query]}"
-      @characters = @characters.where("name LIKE ?", "%#{params[:query]}%").page(params[:page]).per(10)
+      @characters = @characters.where("name LIKE ?", "%#{params[:query]}%").page(params[:page]).per(50)
     end
 
     # Apply status filter if present
     if params[:status].present? && params[:status] != 'All Status'
       puts "Status Filter: #{params[:status]}"
-      @characters = @characters.where(status: params[:status]).page(params[:page]).per(10)
+      @characters = @characters.where(status: params[:status]).page(params[:page]).per(50)
     end
 
     # Apply gender filter if present
     if params[:gender].present? && params[:gender] != 'All Gender'
       puts "Gender Filter: #{params[:gender]}"
-      @characters = @characters.where(gender: params[:gender]).page(params[:page]).per(10)
+      @characters = @characters.where(gender: params[:gender]).page(params[:page]).per(50)
     end
 
     # Apply category filter if present
     if params[:category].present?
       category = Category.find_by(name: params[:category])
-      @characters = category.characters.page(params[:page]).per(10) if category
+      @characters = category.characters.page(params[:page]).per(50) if category
     end
 
 
@@ -40,7 +40,7 @@ class ProductsController < ApplicationController
 
 
     # Paginate the filtered characters
-    @characters = @characters.page(params[:page]).per(10)
+    @characters = @characters.page(params[:page]).per(50)
   end
 
   def cart
