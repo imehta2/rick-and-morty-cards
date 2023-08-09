@@ -2,20 +2,28 @@
 <h1>Rick and Morty Collectibles</h1>
 
 <%= render 'shared/navbar' %>
-<h1>Products</h1>
 
-<h2>Your Cart</h2>
+
+<h1>Your Cart</h1>
 
 <% if @cart_items.any? %>
-  <ul>
-    <% @cart_items.each do |character| %>
-      <li>
-        <%= character.name %> x <%= character.cart_items_quantity %>
-        <%= button_to "Remove", remove_from_cart_path(character_id: character.id), method: :delete %>
-      </li>
-    <% end %>
-  </ul>
-
-<% else %>
-  <p>Your cart is empty.</p>
-<% end %>
+    <ul class="cart-list">
+      <% @cart_items.each do |character| %>
+        <li class="cart-item">
+          <div class="cart-item-details">
+            <%= character.name %> x
+            <%= form_tag update_cart_item_products_path, method: :put, class: 'quantity-form' do %>
+              <%= hidden_field_tag :character_id, character.id %>
+              <%= number_field_tag :quantity, character.cart_items_quantity, min: 1, class: 'quantity-input' %>
+              <%= submit_tag "Update", class: 'update-button' %>
+            <% end %>
+          </div>
+          <%= button_to "Remove", remove_from_cart_path(character_id: character.id), method: :delete, class: 'remove-button' %>
+        </li>
+      <% end %>
+    </ul>
+    <%= link_to "Proceed to Checkout", checkout_checkout_path, class: "checkout-button" %>
+  <% else %>
+    <p>Your cart is empty.</p>
+  <% end %>
+</div>

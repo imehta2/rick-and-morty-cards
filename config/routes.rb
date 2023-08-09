@@ -28,4 +28,18 @@ Rails.application.routes.draw do
   post '/add_to_cart/:character_id', to: 'products#add_to_cart', as: 'add_to_cart'
   delete '/remove_path/:character_id', to: 'products#remove_from_cart', as: 'remove_from_cart'
 
+
+  resources :products do
+    collection do
+      get :cart
+      post :add_to_cart
+      put :update_cart_item
+      delete :remove_from_cart
+    end
+  end
+
+  get "/checkout/cart", to: "checkout#cart", as: "checkout_cart"
+  get "/checkout/checkout", to: "checkout#checkout", as: "checkout_checkout"
+  post "/checkout/place_order", to: "checkout#place_order", as: "checkout_place_order"
 end
+
