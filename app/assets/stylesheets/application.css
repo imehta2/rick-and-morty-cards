@@ -143,7 +143,8 @@ h2 {
   display: flex;
   justify-content: space-between; /* Align items at the ends of the navigation bar */
   align-items: center; /* Center items vertically */
-  height: 40px; /* Add height to make the navigation bar thicker */
+   /* height: 40px;Add height to make the navigation bar thicker */
+   padding: 10px; /* Add padding around the navigation bar */
 }
 
 .navbar-list {
@@ -152,6 +153,8 @@ h2 {
   padding: 0;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0 10px;
 }
 
 .navbar-list li {
@@ -176,6 +179,7 @@ h2 {
 .search-bar {
   display: flex;
   align-items: center;
+  padding: 0 10px;
 }
 
 .search-inputs {

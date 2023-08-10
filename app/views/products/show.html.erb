@@ -5,16 +5,16 @@
 
 
 <div class="cards-container">
-<h1><%= @character.name %></h1>
-<%= image_tag(@character.image) %>
-<p class="status" data-status="<%= character.status %>">Status: <%= character.status %></p>
-<p>Gender: <%= @character.gender %></p>
-<% if @character.location.present? %>
-  <p>Location: <%= @character.location %></p>
-<% else %>
-  <p>Location: Unknown</p>
-<% end %>
-<p class="price">Price: <%= character.price %></p>
+      <h1><%= @character.name %></h1>
+      <%= image_tag(@character.image) %>
+      <p>Status: <%= @character.status %></p>
+      <p>Gender: <%= @character.gender %></p>
+      <% if @character.location.present? %>
+        <p>Location: <%= @character.location %></p>
+      <% else %>
+        <p>Location: Unknown</p>
+      <% end %>
+      <p>Price: <%= @character.price %></p>
 
 
 <%= button_to "Add to Cart", add_to_cart_path(character_id: @character.id), method: :post %>

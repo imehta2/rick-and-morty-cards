@@ -35,9 +35,9 @@ class CheckoutController < ApplicationController
     @cart.each do |item|
       OrderItem.create!(
         order_id: order.id,
-        pokemon_id: item['id'],
+        character_id: item['id'],
         quantity: item['quantity'],
-        price: Pokemon.find(item['id']).price
+        price: Character.find(item['id']).price
       )
     end
 
@@ -61,7 +61,18 @@ class CheckoutController < ApplicationController
 
   def calculate_tax(total_price, province)
     return 0 unless province
-    (total_price * (province.PST + province.GST + province.HST) / 100).round(2)
+
+    pst_rate = province.PST
+    gst_rate = province.GST
+    hst_rate = province.HST
+
+    calculate_tax_amount(total_price, pst_rate, gst_rate, hst_rate)
+  end
+
+  private
+
+  def calculate_tax_amount(total_price, pst_rate, gst_rate, hst_rate)
+    (total_price * (pst_rate + gst_rate + hst_rate) / 100).round(2)
   end
 
   def process_payment
