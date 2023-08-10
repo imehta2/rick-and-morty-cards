@@ -5,19 +5,20 @@ class ProductsController < ApplicationController
 
     # Apply search filter if the "query" parameter is present
     if params[:query].present?
-      puts "Search Query: #{params[:query]}"
-      @characters = @characters.where("name LIKE ?", "%#{params[:query]}%").page(params[:page]).per(50)
+      Rails.logger.debug "Search Query: #{params[:query]}"
+      @characters = @characters.where("name LIKE ?",
+                                      "%#{params[:query]}%").page(params[:page]).per(50)
     end
 
     # Apply status filter if present
-    if params[:status].present? && params[:status] != 'All Status'
-      puts "Status Filter: #{params[:status]}"
+    if params[:status].present? && params[:status] != "All Status"
+      Rails.logger.debug "Status Filter: #{params[:status]}"
       @characters = @characters.where(status: params[:status]).page(params[:page]).per(50)
     end
 
     # Apply gender filter if present
-    if params[:gender].present? && params[:gender] != 'All Gender'
-      puts "Gender Filter: #{params[:gender]}"
+    if params[:gender].present? && params[:gender] != "All Gender"
+      Rails.logger.debug "Gender Filter: #{params[:gender]}"
       @characters = @characters.where(gender: params[:gender]).page(params[:page]).per(50)
     end
 
@@ -27,15 +28,9 @@ class ProductsController < ApplicationController
       @characters = category.characters.page(params[:page]).per(50) if category
     end
 
-
-  def show
-    @character = Character.find(params[:id])
-
-
-  end
-
-
-
+    def show
+      @character = Character.find(params[:id])
+    end
 
     # Paginate the filtered characters
     @characters = @characters.page(params[:page]).per(50)
@@ -44,7 +39,7 @@ class ProductsController < ApplicationController
   def cart
     # Retrieve the cart from the session
     cart = session[:cart] || {}
-    puts cart.inspect
+    Rails.logger.debug cart.inspect
     # Get the character ids from the cart
     character_ids = cart.keys
 
@@ -56,7 +51,7 @@ class ProductsController < ApplicationController
   end
 
   def add_to_cart
-    puts params.inspect
+    Rails.logger.debug params.inspect
     character = Character.find(params[:character_id])
 
     # Retrieve the cart from the session or create an empty cart if it doesn't exist
@@ -71,11 +66,10 @@ class ProductsController < ApplicationController
 
     # Save the updated cart back to the session
     session[:cart] = cart
-    puts session[:cart].inspect
+    Rails.logger.debug session[:cart].inspect
 
     redirect_to cart_path, notice: "#{character.name} added to cart."
   end
-
 
   def update_cart_item
     character_id = params[:character_id]
@@ -84,7 +78,7 @@ class ProductsController < ApplicationController
     # Retrieve the cart from the session
     cart = session[:cart] || {}
 
-    if new_quantity > 0
+    if new_quantity.positive?
       cart[character_id] = new_quantity
     else
       # If quantity is 0 or less, remove the item from the cart
@@ -111,5 +105,4 @@ class ProductsController < ApplicationController
 
     redirect_to cart_path, notice: "Item removed from cart."
   end
-
 end

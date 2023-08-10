@@ -11,7 +11,28 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
 
-// Overriding any non-variable Sass must be done after the fact.
-// For example, to change the default status-tag color:
-//
-//   .status_tag { background: #6090DB; }
+// Override the default color of the status tag
+.status_tag {
+  background: #6090DB; // Change to your desired color
+}
+
+// Override the background color of the form field
+.formtastic .inputs input[type="text"],
+.formtastic .inputs textarea,
+.formtastic .inputs select {
+  background-color: #f5f5f5; // Change to your desired background color
+}
+
+// Style the sidebar links with a different background color and text color
+#sidebar {
+  background-color: #333; // Change to your desired background color
+  color: white; // Change to your desired text color
+  a {
+    color: white; // Set link color inside the sidebar
+  }
+}
+
+// Add a border to the footer
+#footer {
+  border-top: 1px solid #ccc; // Add a border at the top of the footer
+}

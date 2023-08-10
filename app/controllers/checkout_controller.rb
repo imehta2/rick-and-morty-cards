@@ -75,30 +75,30 @@ class CheckoutController < ApplicationController
     (total_price * (pst_rate + gst_rate + hst_rate) / 100).round(2)
   end
 
-  def process_payment
-    @token = params[:token]
+  def place_order
+    # Process the form submission and payment here
+    # This is where you should handle the payment using the Stripe API
 
-    # Replace this with your actual Stripe secret key
+    # For example:
+    @token = params[:token]
     Stripe.api_key = Rails.configuration.stripe[:secret_key]
 
     begin
       charge = Stripe::Charge.create({
-        amount: (@final_total * 100).to_i,  # Amount in cents
-        currency: 'usd',  # Replace with the appropriate currency code
+        amount: (@final_total * 100).to_i,
+        currency: 'usd',
         description: 'Rick and Morty Collectibles Order',
         source: @token,
       })
 
-      # Here you can update your order status, create line items, etc.
-      # For example, you can create an Order record in the database with the relevant details.
+      # Create an Order record in the database and handle order details
 
       flash[:notice] = "Payment successful! Your order has been placed."
-      redirect_to order_confirmation_path  # Replace with the appropriate path
+      redirect_to order_confirmation_path  # Redirect to the order confirmation page
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to checkout_checkout_path
     end
   end
-
 end

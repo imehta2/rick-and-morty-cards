@@ -1,4 +1,18 @@
-<!-- app/views/checkout/order_confirmation.html.erb -->
 <h1>Order Confirmation</h1>
 <p>Thank you for your order! Your order number is <%= @order.id %>.</p>
-<!-- Display any other relevant information here -->
+
+<!-- Display other order details here -->
+<!-- For example, display the items in the order -->
+<ul>
+  <% @order.line_items.each do |line_item| %>
+    <li><%= line_item.product.name %> - <%= line_item.quantity %> x <%= line_item.product.price %></li>
+  <% end %>
+</ul>
+
+<!-- Display the user's information submitted in the form -->
+<p>Name: <%= @order.name %></p>
+<p>Address: <%= @order.address %></p>
+<p>Postal Code: <%= @order.postal_code %></p>
+
+<!-- Display the payment amount -->
+<p>Total Amount Paid: $<%= @order.total_price %></p>

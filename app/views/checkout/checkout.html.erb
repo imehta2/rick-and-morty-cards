@@ -19,15 +19,15 @@
     <p>Your cart is empty.</p>
   <% end %>
 
-  <h2>Tax Rates</h2>
-  <p>PST: <%= @pst %>%, GST: <%= @gst %>%, HST: <%= @hst %></p>
-
-  <h2>Order Summary</h2>
-  <p>Total Amount: <%= number_to_currency(@total_price) %></p>
-  <p>Total Taxes: <%= number_to_currency(@tax) %></p>
-  <p>Total Amount (including taxes): <%= number_to_currency(@final_total) %></p>
-
   <%= form_for :checkout, url: checkout_place_order_path, method: :post, html: { class: 'checkout-form' } do |f| %>
+    <h2>Tax Rates</h2>
+    <p>PST: <%= @pst %>%, GST: <%= @gst %>%, HST: <%= @hst %></p>
+
+    <h2>Order Summary</h2>
+    <p>Total Amount: <%= number_to_currency(@total_price) %></p>
+    <p>Total Taxes: <%= number_to_currency(@tax) %></p>
+    <p>Total Amount (including taxes): <%= number_to_currency(@final_total) %></p>
+
     <div class="form-group">
       <%= f.label :province_id, "Select Province" %>
       <select name="province_id" class="form-control">
@@ -50,22 +50,29 @@
       <%= f.text_field :postal_code, class: 'form-control' %>
     </div>
 
-  <h2>Payment</h2>
-
-    <div class="form-group">
-      <label for="card-element">
-        Credit or Debit Card
-      </label>
-      <div id="card-element" class="form-control">
-        <!-- A Stripe Element will be inserted here. -->
+    <%= form_tag("/checkout/process_payment", method: "post", id: "payment-form") do %>
+      <h2>Payment</h2>
+      <div id="payment-element">
+        <div class="form-group">
+          <label for="card-element">
+            Credit or Debit Card
+          </label>
+          <div id="card-element" class="form-control">
+            <!-- A Stripe Element will be inserted here. -->
+          </div>
+          <div id="card-errors" role="alert"></div>
+        </div>
       </div>
-      <div id="card-errors" role="alert"></div>
-    </div>
 
-    <div class="form-group">
-      <input type="submit" name="submit" value="Place Order" class="btn btn-primary checkout-button">
-    </div>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+      <div class="form-group">
+        <%= submit_tag "Place Order", class: "btn btn-primary checkout-button" %>
+      </div>
+    <% end %>
+
+    <%= link_to 'Back to Cart', cart_path, class: 'btn btn-secondary' %>
+    <%= javascript_include_tag "stripe" %>
+    <%= csrf_meta_tags %>
   <% end %>
-  <%= link_to 'Back to Cart', cart_path, class: 'btn btn-secondary' %>
 </div>
-<%= javascript_include_tag "stripe" %>

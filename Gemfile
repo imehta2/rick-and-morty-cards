@@ -39,6 +39,10 @@ gem 'kaminari'
 
 gem 'stripe'
 
+gem 'activestorage'
+
+gem 'rubocop'
+gem 'rubocop-rails'
 
 gem 'sassc'
 

@@ -4,7 +4,7 @@ class AdminUser < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
 
-         def self.ransackable_attributes(auth_object = nil)
-          super + %w[email created_at updated_at] # Add the attributes you want to allow for searching
-        end
+  def self.ransackable_attributes(auth_object = nil)
+    super + %w[email created_at updated_at] # Add the attributes you want to allow for searching
+  end
 end
