@@ -19,7 +19,7 @@
               <p>Location: Unknown</p>
             <% end %>
             <p class="price">Price: <%= character.price %></p>
-            <a href="#" class="card-link" data-character-id="<%= character.id %>">view</a>
+            <a href="<%= single_product_path(character) %>" class="card-link" data-character-id="<%= character.id %>">view</a>
             <%= button_to "Add to Cart", add_to_cart_path(character_id: character.id), method: :post %>
           </div>
         </div>

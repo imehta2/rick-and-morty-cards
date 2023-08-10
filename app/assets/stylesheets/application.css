@@ -295,10 +295,63 @@ h1 {
   display: inline-block;
   border-radius: 5px;
   float: right;
+  margin-right: 20px; /* Add right margin for spacing */
 }
 
 /* Styling for the item numbers */
 .item-number {
   font-weight: bold;
   margin-right: 5px;
+}
+
+/* app/assets/stylesheets/checkout.css */
+
+/* Style for the container */
+.checkout-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Style for form groups */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Style for input fields and text areas */
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Style for buttons */
+.checkout-button {
+  padding: 10px 20px;
+}
+
+/* Style for the label of the province dropdown */
+label[for="checkout_province_id"] {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Style for the order summary */
+.order-summary {
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+}
+
+/* Style for the total amounts */
+.total-amount {
+  font-weight: bold;
+}
+
+/* Style for the back to cart button */
+.back-to-cart {
+  display: inline-block;
+  margin-top: 20px;
 }

@@ -1,9 +1,0 @@
-// app/views/products/show.js.erb
-$('#character-name').text('<%= @character.name %>');
-$('#character-status').text('Status: <%= @character.status %>');
-$('#character-gender').text('Gender: <%= @character.gender %>');
-$('#character-location').text('Location: <%= @character.location.presence || "Unknown" %>');
-$('#character-price').text('Price: <%= @character.price %>');
-
-// Show the modal
-$('#character-details-modal').fadeIn();

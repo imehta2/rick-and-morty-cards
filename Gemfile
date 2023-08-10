@@ -37,6 +37,7 @@ gem 'open-uri'
 gem 'json'
 gem 'kaminari'
 
+gem 'stripe'
 
 
 gem 'sassc'

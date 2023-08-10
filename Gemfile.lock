@@ -248,6 +248,7 @@ GEM
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     stringio (3.0.7)
+    stripe (8.6.0)
     thor (1.2.2)
     time (0.2.2)
       date
@@ -300,6 +301,7 @@ DEPENDENCIES
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
+  stripe
   turbo-rails
   tzinfo-data
   web-console

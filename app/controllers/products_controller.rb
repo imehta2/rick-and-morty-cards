@@ -30,10 +30,8 @@ class ProductsController < ApplicationController
 
   def show
     @character = Character.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.js # This will render app/views/products/show.js.erb
-    end
+
+
   end
 
 

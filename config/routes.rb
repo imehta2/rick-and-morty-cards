@@ -41,5 +41,13 @@ Rails.application.routes.draw do
   get "/checkout/cart", to: "checkout#cart", as: "checkout_cart"
   get "/checkout/checkout", to: "checkout#checkout", as: "checkout_checkout"
   post "/checkout/place_order", to: "checkout#place_order", as: "checkout_place_order"
+  get "/checkout/order_confirmation", to: "checkout#order_confirmation", as: "order_confirmation"
+
+  post "/checkout/process_payment", to: "checkout#process_payment", as: "process_payment"
+
+  get 'products/:id', to: 'products#show', as: 'single_product'
+
+
+
 end
 
